@@ -1,0 +1,23 @@
+/* Highlights are painted with the CSS Custom Highlight API: no <mark> elements are
+   inserted, so the page's own DOM, layout and scripts are never touched. */
+::highlight(mg-yellow) { background-color: rgba(255, 212, 0, 0.42); }
+::highlight(mg-green)  { background-color: rgba(60, 200, 110, 0.36); }
+::highlight(mg-blue)   { background-color: rgba(70, 150, 255, 0.34); }
+::highlight(mg-pink)   { background-color: rgba(240, 90, 160, 0.34); }
+::highlight(mg-purple) { background-color: rgba(150, 110, 255, 0.36); }
+
+/* Highlights that carry a note get a dotted underline. */
+::highlight(mg-note) {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(120, 90, 0, 0.75);
+}
+
+/* The highlight whose popover is open: slightly deeper tint, no underline noise. */
+::highlight(mg-hover) { background-color: rgba(0, 0, 0, 0.07); }
+/* Brief emphasis when jumping to a highlight. */
+::highlight(mg-flash) { background-color: rgba(255, 140, 0, 0.55); }
+
+/* Pointer over a highlight; set on html/body only so the page's own element cursors still win. */
+html.mg-pointer, html.mg-pointer body { cursor: pointer; }

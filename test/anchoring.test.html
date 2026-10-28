@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Margin anchoring tests</title>
+  <link rel="stylesheet" href="../content.css">
+  <style>body { font: 16px/1.6 Georgia, serif; max-width: 680px; margin: 32px auto; } #results { font: 13px/1.5 ui-monospace, monospace; white-space: pre-wrap; }</style>
+</head>
+<body>
+  <article id="article">
+    <p id="p1">Reading slowly is not a failure of speed; it is a choice about attention. When you slow down, the
+      <em>shape of an argument</em> becomes visible, and the small hinges that hold it together start to creak.</p>
+    <p id="p2">Most of what we read is forgotten within a week. The remedy is not more reading but better
+      <strong>retrieval</strong>.</p>
+    <p id="p3">Good notes are conversations with the text. A highlight says “this matters”; a note says why.</p>
+    <aside id="aside">Aside: the same phrase can appear twice. Most of what we read is forgotten within a week, unless we return to it.</aside>
+    <p id="p4">A library you own outlives every app that promised to hold it for you.</p>
+  </article>
+  <pre id="results">running…</pre>
+
+  <script src="chrome-stub.js"></script>
+  <script src="helpers.js"></script>
+  <script>
+    // Seed storage before the content script boots, as if saved on an earlier visit.
+    __marginStore.reset();
+    localStorage.setItem('__margin_store', JSON.stringify({
+      ['p:' + location.origin + location.pathname]: {
+        url: location.origin + location.pathname, title: 'seed', site: 'localhost', created: 1, updated: 1, note: '',
+        highlights: [
+          // Saved position is wrong (page changed since): must be found by its context.
+          { id: 'h-seed', color: 'yellow', exact: 'the small hinges that hold it together', prefix: 'becomes visible, and ', suffix: ' start to creak.', start: 9999, note: 'n', created: 1 },
+          // Text no longer on the page: must be reported as orphaned, not guessed.
+          { id: 'h-gone', color: 'purple', exact: 'This sentence was removed from the page', prefix: '', suffix: '', start: 0, note: '', created: 1 },
+        ],
+      },
+    }));
+  </script>
+  <script src="../shared.js"></script>
+  <script src="../content.js"></script>
+  <script src="anchoring.test.js"></script>
+</body>
+</html>

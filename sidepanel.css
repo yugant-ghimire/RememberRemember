@@ -1,0 +1,30 @@
+body { display: flex; flex-direction: column; min-height: 100vh; }
+.top {
+  position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 650; font-size: 14px; }
+.private { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; font-size: 11px; color: var(--muted);
+  padding: 2px 8px; border-radius: 99px; background: var(--surface-2); }
+.private svg.i { width: 12px; height: 12px; }
+.page { display: flex; gap: 10px; align-items: center; padding: 14px 14px 6px; }
+.page .fav { border-radius: 4px; flex: none; }
+.page .titles { min-width: 0; }
+.page .title { font-weight: 600; font-size: 14px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.page .host { font-size: 12px; }
+.site-toggle { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 14px; padding: 8px 10px;
+  border-radius: 9px; background: var(--surface-2); font-size: 12px; }
+main { flex: 1; padding: 6px 14px 16px; }
+.tools { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.page-note { width: 100%; min-height: 38px; max-height: 160px; resize: vertical; padding: 8px 10px; border-radius: 9px;
+  border: 1px dashed var(--line-strong); background: transparent; outline: none; }
+.page-note:focus { border-style: solid; border-color: var(--accent); background: var(--surface); }
+.list { display: flex; flex-direction: column; gap: 8px; }
+.section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 14px 0 6px; }
+.bottom { position: sticky; bottom: 0; display: flex; gap: 8px; padding: 10px 14px; border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); }
+.bottom .btn { flex: 1; justify-content: center; }
+.empty .art { width: 44px; height: 44px; border-radius: 12px; display: inline-grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+.empty .art svg.i { width: 22px; height: 22px; }
+.shortcuts { margin: 18px auto 0; max-width: 280px; }

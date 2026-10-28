@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RememberRemember</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><img src="icons/icon32.png" alt="" width="20" height="20"> RememberRemember</div>
+    <span class="private" title="Your highlights never leave this browser"><span id="lockIcon"></span> Private</span>
+    <button class="icon-btn" id="openLibrary" title="Open library"></button>
+  </header>
+
+  <section class="page" id="pageInfo" hidden>
+    <img class="fav" id="fav" alt="" width="20" height="20">
+    <div class="titles">
+      <div class="title" id="pageTitle"></div>
+      <div class="host muted" id="pageHost"></div>
+    </div>
+  </section>
+
+  <section class="site-toggle" id="siteToggle" hidden>
+    <span>Highlight on <b id="siteName"></b></span>
+    <label class="switch"><input type="checkbox" id="siteEnabled"><span></span></label>
+  </section>
+
+  <main id="main"></main>
+
+  <footer class="bottom" id="footer" hidden>
+    <button class="btn" id="copyMd"></button>
+    <button class="btn" id="downloadMd"></button>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script src="ui.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

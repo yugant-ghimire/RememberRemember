@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "RememberRemember — Private Highlighter",
+  "short_name": "RememberRemember",
+  "version": "1.0.0",
+  "description": "Highlight and annotate the web. Everything stays in your browser — no account, no servers, no tracking.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "RememberRemember — open highlights panel",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "unlimitedStorage", "contextMenus", "sidePanel", "scripting", "favicon"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "file:///*"],
+      "js": ["shared.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+Shift+M" },
+      "description": "Open the RememberRemember panel"
+    },
+    "highlight-selection": {
+      "suggested_key": { "default": "Alt+Shift+H" },
+      "description": "Highlight the selected text"
+    }
+  },
+  "options_page": "library.html",
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; img-src 'self' data: chrome-extension:; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'"
+  }
+}

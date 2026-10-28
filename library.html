@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RememberRemember Library</title>
+  <link rel="icon" href="icons/icon32.png">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="library.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><img src="icons/icon32.png" alt="" width="22" height="22"> RememberRemember</div>
+    <label class="search grow" id="searchBox"><span id="searchIcon"></span><input id="q" placeholder="Search highlights, notes and titles" autocomplete="off"><kbd>/</kbd></label>
+    <button class="btn" id="exportBtn"></button>
+    <button class="icon-btn" id="settingsBtn" title="Settings"></button>
+  </header>
+
+  <section class="welcome" id="welcome" hidden>
+    <div>
+      <h2>RememberRemember is installed</h2>
+      <p>Select text on any page and pick a color. Click a highlight to add a note. Press <kbd class="k" id="panelKey">⌥⇧M</kbd> for the side panel.</p>
+      <p class="muted"><span id="welcomeLock"></span> Everything is stored only in this browser profile. No account, no servers, no analytics.</p>
+    </div>
+    <button class="icon-btn" id="welcomeClose" title="Dismiss"></button>
+  </section>
+
+  <div class="layout">
+    <aside class="rail">
+      <div class="stats" id="stats"></div>
+      <div class="rail-label">Colors</div>
+      <div id="colorFilters" class="rail-list"></div>
+      <div class="rail-label">Filters</div>
+      <div class="rail-list">
+        <button class="rail-item" id="notesOnly" aria-pressed="false"><span id="noteIcon"></span>With notes</button>
+      </div>
+      <div class="rail-label">Sites</div>
+      <div id="siteFilters" class="rail-list"></div>
+    </aside>
+    <main>
+      <div class="list-head">
+        <div id="resultCount" class="muted"></div>
+        <select id="sort" aria-label="Sort">
+          <option value="updated">Recently updated</option>
+          <option value="created">Recently added</option>
+          <option value="title">Title A–Z</option>
+          <option value="count">Most highlights</option>
+        </select>
+      </div>
+      <div id="pages"></div>
+    </main>
+  </div>
+
+  <dialog id="settings">
+    <form method="dialog" class="dlg">
+      <header><h2>Settings</h2><button class="icon-btn" value="close" id="closeSettings" title="Close"></button></header>
+
+      <h3>Color meanings</h3>
+      <p class="muted">Name each color for how you read — e.g. “Key idea”, “Disagree”, “To research”.</p>
+      <div id="labelInputs" class="labels"></div>
+
+      <h3>Behavior</h3>
+      <label class="row"><span>Show the toolbar when I select text</span><span class="switch"><input type="checkbox" id="showToolbar"><span></span></span></label>
+
+      <h3>Paused sites</h3>
+      <div id="pausedSites" class="paused"></div>
+      <div class="row add-site"><input id="newSite" placeholder="example.com"><button class="btn" type="button" id="addSite">Pause site</button></div>
+
+      <h3>Your data</h3>
+      <p class="muted">Stored in <code>chrome.storage.local</code> on this device only. <span id="usage"></span></p>
+      <div class="row wrap">
+        <button class="btn" type="button" id="exportJson"></button>
+        <button class="btn" type="button" id="exportMd"></button>
+        <button class="btn" type="button" id="importBtn"></button>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+      <div class="row wrap danger-zone">
+        <button class="btn danger" type="button" id="eraseAll">Delete all highlights…</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="shared.js"></script>
+  <script src="ui.js"></script>
+  <script src="library.js"></script>
+</body>
+</html>
